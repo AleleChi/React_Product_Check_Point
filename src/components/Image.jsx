@@ -1,4 +1,4 @@
-import product from "./product";
+import product from "../Product";
 
 function Image() {
   return (

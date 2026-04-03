@@ -1,4 +1,4 @@
-import product from "./Product";
+import product from "../Product";
 
 function Price() {
   return (

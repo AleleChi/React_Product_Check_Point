@@ -1,9 +1,9 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import Name from "./Name";
-import Price from "./Price";
-import Description from "./Description";
-import Image from "./Image";
-import product from "./Product";
+import Name from "./components/Name";
+import Price from "./components/Price";
+import Description from "./components/Description";
+import Image from "./components/Image";
+import Product from "./Product";
 import "./App.css";
 
 // ── Provide your first name here 
