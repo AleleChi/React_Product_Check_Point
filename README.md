@@ -128,7 +128,7 @@ const firstName = "YourName";
 
 ## 🌐 Live Demo
 
-👉 Netlify Link: *(Add your deployed link here)*
+👉 Netlify Link: *[(Add your deployed link here)](https://productcheckpoint.netlify.app/)*
 
 ---
 
