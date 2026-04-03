@@ -1,0 +1,405 @@
+/* ── Google Fonts ── */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap");
+
+/* ── CSS Variables ── */
+:root {
+  --bg: #0a0a0f;
+  --surface: #13131a;
+  --card-bg: #16161f;
+  --border: rgba(255, 255, 255, 0.07);
+  --accent: #c8a96e;
+  --accent-glow: rgba(200, 169, 110, 0.25);
+  --accent-2: #7b61ff;
+  --text-primary: #f0ede6;
+  --text-secondary: #8a8799;
+  --text-muted: #4e4c5c;
+  --radius: 20px;
+  --shadow: 0 32px 80px rgba(0, 0, 0, 0.6);
+}
+
+/* ── Reset & Base ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text-primary);
+  font-family: "DM Sans", sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── App Root ── */
+.app-root {
+  position: relative;
+  min-height: 100vh;
+  padding-bottom: 60px;
+}
+
+/* ── Ambient Blobs ── */
+.blob {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.18;
+  pointer-events: none;
+  z-index: 0;
+  animation: blobDrift 14s ease-in-out infinite alternate;
+}
+
+.blob-1 {
+  width: 520px;
+  height: 520px;
+  background: var(--accent-2);
+  top: -180px;
+  left: -160px;
+}
+
+.blob-2 {
+  width: 400px;
+  height: 400px;
+  background: var(--accent);
+  bottom: 100px;
+  right: -120px;
+  animation-delay: -5s;
+}
+
+.blob-3 {
+  width: 300px;
+  height: 300px;
+  background: #ff6b6b;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.08;
+  animation-delay: -9s;
+}
+
+@keyframes blobDrift {
+  from {
+    transform: scale(1) translate(0, 0);
+  }
+  to {
+    transform: scale(1.12) translate(30px, -30px);
+  }
+}
+
+/* ── Container override ── */
+.container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── Header ── */
+.store-eyebrow {
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.35em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  animation: fadeDown 0.8s ease both;
+}
+
+.store-title {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-weight: 900;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  animation: fadeDown 0.9s 0.1s ease both;
+}
+
+/* ── Product Card ── */
+.product-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  position: relative;
+  animation: riseUp 0.9s 0.2s cubic-bezier(0.22, 1, 0.36, 1) both;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 48px 100px rgba(0, 0, 0, 0.7), 0 0 60px var(--accent-glow);
+}
+
+/* ── Badge ── */
+.badge-new {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 10;
+  background: var(--accent);
+  color: #0a0a0f;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 50px;
+}
+
+/* ── Product Image ── */
+.product-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1a1a26 0%, #0e0e18 100%);
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  filter: brightness(0.88) saturate(1.1);
+}
+
+.product-card:hover .product-image {
+  transform: scale(1.04);
+}
+
+.image-shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.03) 0%,
+    transparent 60%,
+    rgba(200, 169, 110, 0.06) 100%
+  );
+  pointer-events: none;
+}
+
+/* ── Card Body ── */
+.card-body-inner {
+  padding: 32px 36px 36px;
+}
+
+/* ── Product Name ── */
+.product-name {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.4rem, 3vw, 1.85rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  margin-bottom: 0;
+}
+
+/* ── Divider ── */
+.divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    var(--accent) 0%,
+    transparent 100%
+  );
+  margin: 20px 0;
+  opacity: 0.4;
+}
+
+/* ── Product Description ── */
+.product-description {
+  font-size: 0.92rem;
+  font-weight: 300;
+  color: var(--text-secondary);
+  line-height: 1.75;
+  margin-bottom: 0;
+}
+
+/* ── Footer Row ── */
+.card-footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 28px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+
+/* ── Price ── */
+.product-price-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.price-label {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.product-price {
+  font-family: "Playfair Display", serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+/* ── Buy Button ── */
+.btn-buy {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--accent);
+  color: #0a0a0f;
+  border: none;
+  border-radius: 50px;
+  padding: 13px 26px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+}
+
+.btn-buy:hover {
+  background: #d9ba80;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px var(--accent-glow);
+}
+
+.btn-buy:active {
+  transform: translateY(0);
+}
+
+/* ── Greeting Section ── */
+.greeting-section {
+  animation: riseUp 0.9s 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.greeting-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 50px;
+  padding: 14px 28px;
+  backdrop-filter: blur(8px);
+}
+
+.greeting-wave {
+  font-size: 1.3rem;
+  animation: wave 2.2s ease-in-out infinite;
+  display: inline-block;
+  transform-origin: 70% 70%;
+}
+
+@keyframes wave {
+  0%, 100% { transform: rotate(0deg); }
+  20% { transform: rotate(20deg); }
+  40% { transform: rotate(-8deg); }
+  60% { transform: rotate(16deg); }
+  80% { transform: rotate(-4deg); }
+}
+
+.greeting-text {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  letter-spacing: 0.01em;
+}
+
+.greeting-text strong {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ── Welcome Image ── */
+.welcome-image-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  animation: riseUp 0.7s 0.1s ease both;
+}
+
+.welcome-image {
+  width: 100%;
+  max-width: 560px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  filter: brightness(0.8) saturate(1.1);
+  transition: filter 0.4s;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.welcome-image:hover {
+  filter: brightness(0.95) saturate(1.2);
+}
+
+.welcome-caption {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-style: italic;
+  letter-spacing: 0.02em;
+}
+
+/* ── Keyframe Animations ── */
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes riseUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── Responsive ── */
+@media (max-width: 576px) {
+  .card-body-inner {
+    padding: 24px 20px 28px;
+  }
+
+  .product-image-wrapper {
+    height: 240px;
+  }
+
+  .card-footer-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .btn-buy {
+    width: 100%;
+    justify-content: center;
+  }
+}
